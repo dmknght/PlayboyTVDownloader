@@ -64,8 +64,11 @@ def get_data(url, cookie):
 					)
 				utils.printf("Saving to %s" %(dload_name), 'good')
 				utils.printf("Downloading, please wait....")
-				process.retrieve(dload_link, dload_name)
-				utils.printf("Download completed!", "good")
+				try:
+					process.retrieve(dload_link, dload_name)
+					utils.printf("Download completed!", "good")
+				except:
+					utils.printf("Error while downloading file", "bad")
 
 			else:
 				utils.printf("You can download your video manually")
