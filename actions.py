@@ -16,7 +16,7 @@ def best_video_quality(link_dict):
 		int_value, _ = value.split('p')
 		if int(int_value) > max_value:
 			max_value, best_quality = int(int_value), value
-	utils.printf("Best video quality: %s" %(max_value), "good")		
+	utils.printf("\nBest video quality: %s" %(max_value), "good")		
 	return max_value, best_quality
 
 
@@ -34,8 +34,10 @@ def get_data(url, cookie):
 		else:
 			resp = process.response().read()
 			link_info = json.loads(parse_data(resp))
+			utils.print_table(("Quality", "Video URL"), *link_info.items())
 			quality, best_format = best_video_quality(link_info)
 			dload_link = link_info[best_format]
+			utils.printf(dload_link, "good")
 
 			utils.printf("Do you want to save this video? [Y]")
 			option = raw_input()
@@ -60,13 +62,13 @@ def get_data(url, cookie):
 							re.MULTILINE
 						)[0]
 					)
+				utils.printf("Saving to %s" %(dload_name), 'good')
 				utils.printf("Downloading, please wait....")
 				process.retrieve(dload_link, dload_name)
 				utils.printf("Download completed!", "good")
 
 			else:
-				utils.printf(dload_link, "good")
-				utils.printf("You can download your video manually", "good")
+				utils.printf("You can download your video manually")
 	
 	except KeyboardInterrupt:
 		utils.printf("Terminated by user!", "bad")

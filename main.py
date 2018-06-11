@@ -32,5 +32,7 @@ else:
 	if option == "help" or option == "-h" or option == "--help":
 		utils.print_full_help()
 	else:
+		utils.print_banner()
+		utils.printf("\nPlease wait....")
 		actions.get_data(option, cookie)
 

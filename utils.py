@@ -57,14 +57,13 @@ def print_table(headers, *args, **kwargs):
 	print(headers_line)
 	print(headers_separator_line)
 	for arg in args:
-		content_line = '  '
+		content_line = '| '
 		for idx, element in enumerate(arg):
 			content_line = "".join((
 				content_line,
 				'{:{}}'.format(element, fill[idx])
 			))
 		print(content_line)
-		
 		
 def print_banner():
 	print("""
