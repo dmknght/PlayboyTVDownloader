@@ -18,7 +18,7 @@ except ImportError as error:
 
 	
 try:
-	getcookie = open('cookie.dat', 'r')
+	getcookie = open('cookie.dat', 'r').replace("\n", "")
 	cookie = getcookie.read()
 	getcookie.close()
 except:
